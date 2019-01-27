@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置全局属性-->
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+
+        <!--当返回行的所有列都是空时，MyBatis默认返回null-->
+       <!-- <setting name="returnInstanceForEmptyRow" value="true"/> 这行配置有问题，会出现bean无法注入-->
+        <!--开启驼峰命名法，数据库中a_name映射到javabean中属性aName-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+        <!--显式的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
+        <setting name="cacheEnabled" value="true"/> <!--开启二级缓存，默认基于namespace级别的缓存
+        全局地开启或关闭配置文件中的所有映射器已经配置的任何缓存。 -->
+        <setting name="lazyLoadingEnabled" value="true"/> <!--开启懒加载，按需加载
+        延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置fetchType属性来覆盖该项的开关状态-->
+        <setting name="aggressiveLazyLoading" value="false"/><!--当开启时，任何方法的调用都会加载该对象的所有属性。否则，每个属性会按需加载-->
+    </settings>
+    <!--
+      plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+      properties?, settings?,
+      typeAliases?, typeHandlers?,
+      objectFactory?,objectWrapperFactory?,
+      plugins?,
+      environments?, databaseIdProvider?, mappers?,
+  -->
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名,mybatis中分页拦截器插件 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+        </plugin>
+       <!-- //第二种，Mapper接口方式的调用，分页插件推荐这种使用方式。
+        PageHelper.startPage(1, 10);
+        List<Country> list = countryMapper.selectIf(1);
+
+        -->
+    </plugins>
+    <!-- databaseIdProvider：支持多数据库厂商的；
+		 type="DB_VENDOR"：VendorDatabaseIdProvider
+		 	作用就是得到数据库厂商的标识(驱动getDatabaseProductName())，mybatis就能根据数据库厂商标识来执行不同的sql;
+		 	MySQL，Oracle，SQL Server,xxxx
+	  -->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+        <property name="SQL Server" value="sqlserver"/>
+    </databaseIdProvider>
+
+
+
+    <!--<typeAliases>
+        &lt;!&ndash;  给返回类起一个别名，为了在xml映射文件中，返回类型更短，如果没有alias，默认类名第一个字母小写&ndash;&gt;
+        <typeAlias type="" alias=""/>
+        &lt;!&ndash;给某一个包下的类，批量起别名，默认别名是类名第一个字母小写,别名不区分大小写
+        如果有重复的类名，在类名上定义注解@Alias("新的别名"))进行区分
+        &ndash;&gt;
+        <package name="包名" ></package>
+    </typeAliases>-->
+
+    <!--SSM框架整合，数据库，以及事务的控制全部交给Spring进行管理-->
+    <!-- environments：环境们，mybatis可以配置多种环境 ,default指定使用某种环境。可以达到快速切换环境。
+			environment：配置一个具体的环境信息；必须有两个标签；id代表当前环境的唯一标识
+				transactionManager：事务管理器；
+					type：事务管理器的类型;JDBC(JdbcTransactionFactory)|MANAGED(ManagedTransactionFactory)
+						自定义事务管理器：实现TransactionFactory接口.type指定为全类名
+				dataSource：数据源;
+					type:数据源类型;UNPOOLED(UnpooledDataSourceFactory)
+								|POOLED(PooledDataSourceFactory)
+								|JNDI(JndiDataSourceFactory)
+					自定义数据源：实现DataSourceFactory接口，type是全类名-->
+
+   <!-- <environments default="development">
+
+        <environment id="development">
+            &lt;!&ndash;使用了 JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域&ndash;&gt;
+            <transactionManager type="JDBC"/>
+            &lt;!&ndash;使用数据池，复用实例&ndash;&gt;
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+
+    <!-- mapper:注册一个sql映射
+		注册配置文件
+				resource：引用类路径下的sql映射文件
+					mybatis/mapper/EmployeeMapper.xml
+				url：引用网路路径或者磁盘路径下的sql映射文件
+					file:///var/mappers/AuthorMapper.xml
+				注册接口
+				class：引用（注册）接口，
+					1、有sql映射文件，映射文件名必须和接口同名，并且放在与接口同一目录下；
+					2、没有sql映射文件，所有的sql都是利用注解写在接口上;
+					推荐：
+						比较重要的，复杂的Dao接口我们来写sql映射文件
+						不重要，简单的Dao接口为了开发快速可以使用注解；
+		-->
+    <!-- <mapper resource="mybatis/mapper/EmployeeMapper.xml"/> -->
+    <!-- <mapper class="com.atguigu.mybatis.dao.EmployeeMapperAnnotation"/>
+     <mappers>
+        <mapper resource="" class="" url=""></mapper>
+        <package name="" ></package>
+    </mappers>
+    -->
+
+
+</configuration>
+
+

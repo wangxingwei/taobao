@@ -1,0 +1,6 @@
+cn\yanzhongxin\search\mapper\ItemMapper.class
+cn\yanzhongxin\search\dao\SearchDao.class
+cn\yanzhongxin\search\message\ItemAddMessageListener.class
+cn\yanzhongxin\search\message\MyMessageListener.class
+cn\yanzhongxin\search\service\impl\SearchServiceImpl.class
+cn\yanzhongxin\search\service\impl\SearchItemServiceImpl.class

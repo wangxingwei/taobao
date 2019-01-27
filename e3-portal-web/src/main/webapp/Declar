@@ -1,0 +1,5 @@
+把css,js.images放到这里，就可以不用Spring-MVC中进行资源映射。因为webapp下都是公共可以访问的
+
+如果放在web-inf外界不能直接访问，需要配置资源映射
+     <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>

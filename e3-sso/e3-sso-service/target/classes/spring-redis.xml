@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!--Spring容器创建一个单机版的jedis连接池-->
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool"> <!--&lt;!&ndash;构造器注入主机ip和端口号&ndash;&gt;-->
+		<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+		<constructor-arg name="port" value="6379"></constructor-arg>
+	</bean>
+
+	<bean id="jedisClientPool" class="cn.yanzhongxin.jedis.JedisClientPool">
+		<!--&lt;!&ndash;jedisPool作为属性，必须在类中使用get,set方法。否则无法注入&ndash;&gt;-->
+		<property name="jedisPool" ref="jedisPool"></property>
+	</bean>
+
+
+	<!--jedis集群版，因为测试方法使用了策略模式，因此不需要修改任何代码，只需要修改配置文件-->
+	<!--<bean class="cn.yanzhongxin.jedis.JedisClientCluster">
+		<property name="jedisCluster" ref="jedisCluster"></property>
+	</bean>
+D:\Program Files\Maven\apache-maven-3.5.4-bin\repository\repository\cn\yanzhongxin\e3-mall\e3-sso\e3-sso-web
+	&lt;!&ndash;redis集群&ndash;&gt;
+	<bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+		<constructor-arg name="nodes">
+			<set>&lt;!&ndash;Spring bean set构造器参数的注入&ndash;&gt;
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7001"></constructor-arg>
+				</bean>
+
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7002"></constructor-arg>
+				</bean>
+
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7003"></constructor-arg>
+				</bean>
+
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7004"></constructor-arg>
+				</bean>
+
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7005"></constructor-arg>
+				</bean>
+
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="192.168.25.128"></constructor-arg>
+					<constructor-arg name="port" value="7006"></constructor-arg>
+				</bean>
+			</set>
+		</constructor-arg>
+	</bean>-->
+
+</beans>

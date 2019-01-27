@@ -1,0 +1,11 @@
+cn\yanzhongxin\mapper\TbContentMapper.class
+cn\yanzhongxin\mapper\TbContentCategoryMapper.class
+cn\yanzhongxin\mapper\TbItemParamItemMapper.class
+cn\yanzhongxin\mapper\TbItemCatMapper.class
+cn\yanzhongxin\mapper\TbOrderShippingMapper.class
+cn\yanzhongxin\mapper\TbItemParamMapper.class
+cn\yanzhongxin\mapper\TbOrderItemMapper.class
+cn\yanzhongxin\mapper\TbUserMapper.class
+cn\yanzhongxin\mapper\TbItemMapper.class
+cn\yanzhongxin\mapper\TbItemDescMapper.class
+cn\yanzhongxin\mapper\TbOrderMapper.class

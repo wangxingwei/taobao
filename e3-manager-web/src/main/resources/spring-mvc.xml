@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <!--SpringMVC只是控制网站跳转逻辑  -->
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <!--<context:component-scan base-package="cn.yanzhongxin.controler" use-default-filters="false" >
+        &lt;!&ndash;如果只是扫描controler好像不能自动注入service&ndash;&gt;
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>-->
+    <context:component-scan base-package="cn.yanzhongxin.controler"></context:component-scan>
+    <mvc:annotation-driven/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 配置多媒体解析器 -->
+    <!-- 定义文件上传解析器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>
+    <!-- 配置资源映射 -->
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <!-- 引用dubbo服务 -->
+    <dubbo:application name="e3-manager-web"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.25.128:2181"/>
+    <dubbo:reference interface="cn.yanzhongxin.service.ItemService" id="itemService"/>
+    <!--引用到后台商品分类的服务接口-->
+    <dubbo:reference interface="cn.yanzhongxin.service.TbItemCatServcie" id="tbItemCatServcie"></dubbo:reference>
+    <!--引用到后台商品描述的服务接口-->
+    <dubbo:reference interface="cn.yanzhongxin.service.TbItemDescService" id="tbItemDescService"></dubbo:reference>
+
+    <!--引用后台的商品内容服务 ContentCategorySerivce-->
+    <dubbo:reference interface="cn.yanzhongxin.content.service.ContentCategorySerivce" id="contentCategorySerivce"></dubbo:reference>
+
+    <!--引用后台的商品内容服务 ContentSerivce-->
+    <dubbo:reference interface="cn.yanzhongxin.content.service.ContentService" id="contentService"></dubbo:reference>
+
+    <!--引用后台的维护索引库的服务 ContentSerivce-->
+    <dubbo:reference interface="cn.yanzhongxin.search.service.SearchItemService" id="searchItemServiceImpl"></dubbo:reference>
+
+</beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/e3-cart-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-cart/e3-cart-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-common" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-content/e3-content-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-item-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-manager/e3-manager-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-manager/e3-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-order-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-order/e3-order-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-search-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-search/e3-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-sso-web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-sso/e3-sso-service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3-sso/e3-sso-web" />
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/新建文件夹" />
+    <option name="OPTION_SCOPE" value="protected" />
+    <option name="OPTION_HIERARCHY" value="true" />
+    <option name="OPTION_NAVIGATOR" value="true" />
+    <option name="OPTION_INDEX" value="true" />
+    <option name="OPTION_SEPARATE_INDEX" value="true" />
+    <option name="OPTION_DOCUMENT_TAG_USE" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_VERSION" value="false" />
+    <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="true" />
+    <option name="OPTION_DEPRECATED_LIST" value="true" />
+    <option name="OTHER_OPTIONS" value="-encoding UTF-8 -charset UTF-8" />
+    <option name="HEAP_SIZE" />
+    <option name="LOCALE" value="zh_CN" />
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OPTION_INCLUDE_LIBS" value="false" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/e3-common/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-manager-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-portal-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-content-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-content/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-content-service/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-search/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-search-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-item-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-sso/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-sso-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-cart-web/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-order/pom.xml" />
+        <option value="$PROJECT_DIR$/e3-order-web/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd" location="$USER_HOME$/IdeaProjects/springDTD/dubbo.xsd" />
+    <resource url="http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" location="$USER_HOME$/IdeaProjects/springDTD/mybatis-generator-config_1_0.dtd" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

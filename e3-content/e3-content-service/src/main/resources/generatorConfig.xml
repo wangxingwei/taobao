@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+   <!-- Maven启动逆向生成工具的命令 mybatis-generator:generate  -e-->
+
+    <classPathEntry location="D:\\Program Files\\Maven\\apache-maven-3.5.4-bin\\repository\\repository\\mysql\\mysql-connector-java\\5.1.30\\mysql-connector-java-5.1.30.jar
+" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 去除自动生成的注释 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/e3mall-32"
+                        userId="root"
+                        password="root" />
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- javaModelGenerator：指定javaBean的生成策略
+          targetPackage="com.yanzhongxin.pojo"：目标包名
+          targetProject="src/main/java"：目标工程
+      -->
+        <javaModelGenerator targetPackage="cn.yanzhongxin.pojo"
+                            targetProject="src/main/java" />
+        <!-- sqlMapGenerator：sql映射生成策略： -->
+        <sqlMapGenerator targetPackage="cn.yanzhongxin.mapping" targetProject="src/main/java" />
+        <!-- javaClientGenerator:指定mapper接口所在的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.yanzhongxin.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 配置表
+            schema：不用填写
+            tableName: 表名
+            enableCountByExample、enableSelectByExample、enableDeleteByExample、enableUpdateByExample、selectByExampleQueryId：
+            去除自动生成的例子
+        -->
+        <table tableName="student" domainObjectName="Student"></table>
+
+    </context>
+</generatorConfiguration>
